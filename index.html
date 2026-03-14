@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naavya Jain</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:      #0b0d11;
+  --bg2:     #0f1117;
+  --surface: #13161e;
+  --surface2:#181c27;
+  --ink:     #eceef2;
+  --ink2:    #c8cdd8;
+  --muted:   #636b7d;
+  --orange:  #ff6b35;
+  --green:   #3ecf8e;
+  --blue:    #4d9fff;
+  --yellow:  #f5c842;
+  --line:    #1e2130;
+  --line2:   #252a3a;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Manrope',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+}
+
+/* ── GRID BACKGROUND ── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,107,53,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,107,53,0.03) 1px, transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* radial glow top-left */
+body::after{
+  content:'';
+  position:fixed;
+  top:-200px; left:-200px;
+  width:700px; height:700px;
+  background: radial-gradient(circle, rgba(255,107,53,0.055) 0%, transparent 65%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{
+  position:relative;
+  z-index:1;
+  max-width:1020px;
+  margin:auto;
+  padding:52px 36px 80px;
+}
+
+/* ── NAV ── */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:88px;
+  padding-bottom:22px;
+  border-bottom:1px solid var(--line2);
+}
+
+.logo{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  color:var(--ink2);
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.logo-mark{
+  width:9px; height:9px;
+  background:var(--orange);
+  border-radius:50%;
+  box-shadow:0 0 10px rgba(255,107,53,0.6);
+  animation:breathe 2.8s ease-in-out infinite;
+}
+@keyframes breathe{
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(0.65);opacity:0.5;}
+}
+
+.socials{display:flex;gap:6px;}
+.socials a{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  color:var(--muted);
+  text-decoration:none;
+  padding:5px 12px;
+  border:1px solid var(--line2);
+  border-radius:3px;
+  transition:all 0.2s;
+  background:var(--surface);
+}
+.socials a:hover{border-color:var(--orange);color:var(--orange);}
+
+/* ── HERO ── */
+.hero{margin-bottom:96px;position:relative;}
+
+.terminal{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--green);
+  margin-bottom:32px;
+  background:var(--surface);
+  border:1px solid var(--line2);
+  border-left:3px solid var(--green);
+  border-radius:6px;
+  padding:13px 18px;
+  display:inline-block;
+  min-height:44px;
+  min-width:320px;
+  box-shadow: 0 0 20px rgba(62,207,142,0.06);
+}
+
+#typed-out{white-space:pre;}
+.cursor{
+  display:inline-block;
+  width:7px; height:13px;
+  background:var(--green);
+  vertical-align:text-bottom;
+  margin-left:1px;
+  animation:blink 0.75s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.hero h1{
+  font-family:'Instrument Serif',serif;
+  font-size:74px;
+  font-weight:400;
+  line-height:1.02;
+  letter-spacing:-2px;
+  color:var(--ink);
+  margin-bottom:24px;
+  max-width:780px;
+}
+
+.hero h1 .hl{
+  position:relative;
+  display:inline-block;
+}
+/* orange underline stroke instead of highlighter */
+.hero h1 .hl::after{
+  content:'';
+  position:absolute;
+  bottom:6px; left:0; right:0;
+  height:3px;
+  background:var(--orange);
+  border-radius:2px;
+  box-shadow:0 0 12px rgba(255,107,53,0.6);
+}
+
+.hero h1 em{
+  font-style:italic;
+  color:var(--orange);
+  text-shadow:0 0 40px rgba(255,107,53,0.25);
+}
+
+.hero-desc{
+  max-width:560px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.8;
+  margin-bottom:10px;
+}
+.hero-desc strong{color:var(--ink2);font-weight:600;}
+
+.buttons{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;}
+
+.btn-primary{
+  display:inline-block;
+  padding:12px 26px;
+  border-radius:5px;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  transition:all 0.2s;
+  font-family:'Manrope',sans-serif;
+  background:var(--orange);
+  color:#0b0d11;
+  letter-spacing:0.2px;
+  box-shadow:0 0 22px rgba(255,107,53,0.3);
+}
+.btn-primary:hover{
+  background:#ff8455;
+  transform:translateY(-2px);
+  box-shadow:0 0 32px rgba(255,107,53,0.45);
+}
+
+.btn-secondary{
+  display:inline-block;
+  padding:12px 26px;
+  border-radius:5px;
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+  transition:all 0.2s;
+  font-family:'Manrope',sans-serif;
+  border:1px solid var(--line2);
+  color:var(--ink2);
+  background:var(--surface);
+}
+.btn-secondary:hover{border-color:var(--orange);color:var(--orange);}
+
+/* ── SECTION HEADERS ── */
+section{margin-bottom:90px;}
+
+.section-title{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:36px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  letter-spacing:0.5px;
+}
+.section-title::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:var(--line2);
+}
+
+/* ── EXPERIENCE ── */
+.experience{
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--line2);
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--surface);
+}
+
+.exp-item{
+  padding:30px 34px;
+  border-bottom:1px solid var(--line2);
+  position:relative;
+  transition:background 0.2s;
+}
+.exp-item:last-child{border-bottom:none;}
+.exp-item:hover{background:var(--surface2);}
+
+.exp-item::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:transparent;
+  transition:background 0.2s, box-shadow 0.2s;
+}
+/* each row gets its own color variable */
+.exp-item:nth-child(1){--rule-color: var(--orange); --rule-glow: rgba(255,107,53,0.5);}
+.exp-item:nth-child(2){--rule-color: var(--blue);   --rule-glow: rgba(77,159,255,0.5);}
+.exp-item:nth-child(3){--rule-color: var(--green);  --rule-glow: rgba(62,207,142,0.5);}
+.exp-item:hover::before{
+  background:var(--rule-color);
+  box-shadow:0 0 12px var(--rule-glow);
+}
+
+.exp-header{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:10px;
+}
+
+.exp-role{font-weight:700;font-size:15px;color:var(--ink);}
+
+.exp-date{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  color:var(--muted);
+  background:var(--bg2);
+  padding:3px 9px;
+  border-radius:3px;
+  border:1px solid var(--line2);
+  align-self:flex-start;
+}
+
+.exp-item p{
+  color:var(--muted);
+  font-size:14px;
+  max-width:700px;
+  line-height:1.75;
+}
+
+/* ── PROJECTS ── */
+.projects{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.project{
+  padding:28px;
+  background:var(--surface);
+  border:1px solid var(--line2);
+  border-radius:8px;
+  transition:all 0.22s;
+  position:relative;
+  overflow:hidden;
+}
+
+/* subtle dot-grid texture */
+.project::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image: radial-gradient(circle, var(--line2) 1px, transparent 1px);
+  background-size:20px 20px;
+  opacity:0.5;
+  pointer-events:none;
+}
+
+.project:hover{
+  transform:translateY(-4px);
+  border-color:var(--orange);
+  background:var(--surface2);
+  box-shadow:0 0 40px rgba(255,107,53,0.08), 0 16px 40px rgba(0,0,0,0.3);
+}
+
+.project-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:12px;
+  gap:10px;
+  position:relative;
+}
+
+.project-title{
+  font-family:'Instrument Serif',serif;
+  font-size:21px;
+  font-weight:400;
+  color:var(--ink);
+  line-height:1.2;
+}
+
+.project a{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  color:var(--orange);
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color 0.2s;
+  flex-shrink:0;
+  padding-top:4px;
+}
+.project a:hover{color:var(--blue);}
+
+.project p{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.75;
+  position:relative;
+}
+
+/* ── FOOTER ── */
+footer{
+  margin-top:80px;
+  padding-top:28px;
+  border-top:1px solid var(--line2);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* ── FADE IN ── */
+.fade{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity 0.55s ease, transform 0.55s ease;
+}
+.fade.in{opacity:1;transform:none;}
+
+@media(max-width:760px){
+  .hero h1{font-size:48px;}
+  .projects{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <nav>
+    <div class="logo">
+      <div class="logo-mark"></div>
+      naavyajain.dev
+    </div>
+    <div class="socials">
+      <a href="https://github.com/naavyaj-29">GitHub</a>
+      <a href="https://www.linkedin.com/in/naavya-jain/">LinkedIn</a>
+    </div>
+  </nav>
+
+  <div class="hero fade">
+    <div class="terminal"><span id="typed-out"></span><span class="cursor"></span></div>
+
+    <h1><span class="hl">Hello,</span> I'm <em>Naavya Jain</em></h1>
+
+    <p class="hero-desc"><strong>Computer Science + Economics @ Johns Hopkins University</strong></p>
+    <p class="hero-desc">Building scalable, creative, and sustainable software solutions in healthcare, accessibility, and real-world problems.</p>
+
+    <div class="buttons">
+      <a class="btn-primary" href="#projects">View Projects</a>
+      <a class="btn-secondary" href="https://github.com/naavyaj-29">GitHub</a>
+    </div>
+  </div>
+
+  <section id="experience" class="fade">
+    <div class="section-title">$ cat experience.log</div>
+    <div class="experience">
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Software Engineer Intern — Live150.ai</div>
+          <div class="exp-date">Jul 2025 — Aug 2025</div>
+        </div>
+        <p>Built a cross-platform analytics pipeline using Python, SQL, REST APIs, and PostgreSQL to process 18K+ daily events and power real-time product insights. Designed ETL workflows and CI/CD infrastructure reducing reporting latency by 90% across 20+ KPIs.</p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">ML Engineer Intern — Mira Beauty</div>
+          <div class="exp-date">Jul 2025 — Sep 2025</div>
+        </div>
+        <p>Developed multimodal ML pipelines analyzing 4.8M+ customer reviews and 22K+ businesses. Built recommendation models using CLIP embeddings and optimized a PyTorch inference pipeline for large-scale product personalization.</p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Student Researcher — University of Connecticut</div>
+          <div class="exp-date">2021 — 2022</div>
+        </div>
+        <p>Designed HPC workflows using Python, Bash, and SLURM to classify 500K+ DNA sequences. Built feature-engineered models achieving 98.6% accuracy and 99% precision; research presented at the 2024 CT JSHS STEM Poster Exhibition.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects" class="fade">
+    <div class="section-title">$ ls ~/projects</div>
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-header">
+          <div class="project-title">Sine — HopHacks 1st Place</div>
+          <a href="https://github.com/naavyaj-29/sine-hophacks25">GitHub →</a>
+        </div>
+        <p>AI-enabled reflective platform analyzing emotional patterns from text and video journaling. Built with React, Flask, and Gemini with real-time analytics dashboards.</p>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <div class="project-title">Patient Monitoring Assistant</div>
+          <a href="https://github.com/naavyaj-29/Patient-Monitoring-Assistant">GitHub →</a>
+        </div>
+        <p>AI-powered WhatsApp assistant using Flask, Twilio, and Mixtral-8x7B to track medication adherence, detect side effects, and escalate severe symptoms to clinicians.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>© Naavya Jain</footer>
+
+</div>
+
+<script>
+/* ── TYPING ── */
+const lines = ["SYSTEM.KERNEL :: v1.0 ONLINE","> sudo boot_profile"];
+const el = document.getElementById('typed-out');
+let li=0, ci=0;
+function tick(){
+  if(li>=lines.length) return;
+  const line=lines[li];
+  if(ci<=line.length){
+    el.textContent=lines.slice(0,li).join('\n')+(li>0?'\n':'')+line.slice(0,ci);
+    ci++;
+    setTimeout(tick, ci===1&&li>0?220:48);
+  } else { li++;ci=0;setTimeout(tick,180); }
+}
+window.addEventListener('load',()=>setTimeout(tick,300));
+
+/* ── SCROLL REVEALS ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('in'),i*80);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
